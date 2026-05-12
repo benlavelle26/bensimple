@@ -3,21 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BenSimple — The Sky Is The Limit</title>
+<title>BenSimple. — The Sky Is The Limit</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#060a10;color:#e2e8f0;font-family:'Segoe UI',sans-serif;min-height:100vh}
-.bg{position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(99,102,241,0.18),transparent);pointer-events:none}
-nav{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06)}
+.bg{position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(99,102,241,0.18),transparent);pointer-events:none;z-index:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(6,10,16,0.8);backdrop-filter:blur(20px)}
 .logo{font-size:22px;font-weight:900;background:linear-gradient(135deg,#e2e8f0,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .live{display:flex;align-items:center;gap:6px;font-size:12px;color:#22c55e}
 .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e}
-hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;min-height:90vh}
+.hero{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 80px;min-height:100vh;position:relative;z-index:1}
 .orb{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#0ea5e9);display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:900;color:white;box-shadow:0 0 60px rgba(99,102,241,0.6);margin-bottom:32px;animation:float 4s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 .tag{font-size:11px;letter-spacing:3px;color:#6366f1;text-transform:uppercase;margin-bottom:16px}
 h1{font-size:clamp(32px,8vw,72px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
 .g1{background:linear-gradient(135deg,#e2e8f0,#a5b4fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .g2{background:linear-gradient(135deg,#6366f1,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-p{color:#64748b;font-size:18px;max-width:560px;line-height:1.7;margin-bottom:40px}
-.form{di
+.sub{color:#64748b;font-size:18px;max-width:560px;line-height:1.7;margin-bottom:40px}
+.form{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;width:100%;max-width:480px}
+input{flex:1;min-width:240px;background:rgba(255,255,255,0.06);border:1px solid rgba(99,102,241,0.3);border-radius:12px;padding:14px 18px;color:#e2e8f0;font-size:15px;font-family:inherit}
+input:focus{outline:none;border-color:rgba(99,102,241,0.6)}
+input::placeholder{color:#334155}
+.btn{background:linear-gradient(135deg,#6366f1,#4f46e5);border:none;border-radius:12px;padding:14px 24px;color:white;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 0 30px rgba(99,102,241,0.4);font-family:inherit}
+.note{font-size:12px;color:#1e293b;margin-top:10px}
+.stats{display:flex;gap:48px;margin-top:60px;flex-wrap:wrap;justify-content:center}
+.stat{text-align:center}
+.stat-val{font-size:48px;font-weight:900;background:linear-gradient(135deg,#e2e8f0,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:11px;color:#475569;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.section{padding:80px 24px;max-width:860px;margin:0 auto;position:relative;z-index:1}
+.sec-tag{font-size:11px;letter-spacing:3px;color:#6366f1;text-transform:uppercase;margin-bottom:16px;text-align:center}
+h2{font-size:clamp(24px,4vw,44px);font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#e2e8f0,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:48px}
+.features{display:flex;flex-direction:column;gap:32px}
+.feature{display:flex;gap:20px;align-items:flex-start}
+.ficon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ftitle{font-weight:700;color:#e2e8f0;font-size:17px;margin-bottom:6px}
+.fdesc{color:#64748b;font-size:14px;line-height:1.7}
+.modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.module{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px;transition:all 0.3s}
+.module:hover{background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.4);transform:translateY(-4px)}
+.mod-top{display:flex;justify-content:space-between;margin-bottom:12px}
+.badge{border-radius:20px;padding:2px 10px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.live-b{background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3);color:#22c55e}
+.beta-b{background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316}
+.soon-b{background:rgba(100,116,139,0.15);border:1px solid rgba(100,116,139,0.3);color:#64748b}
+.mod-title{font-weight:700;color:#e2e8f0;font-size:16px;margin-bottom:6px}
+.mod-desc{color:#64748b;font-size:13px;line-height:1.5}
+.quote-box{text-align:center;padding:60px 24px;max-width:700px;margin:0 auto;position:relative;z-index:1}
+blockquote{font-size:clamp(18px,3vw,26px);font-weight:700;line-height:1.6;color:#475569;font-style:italic}
+blockquote span{color:#e2e8f0;font-style:normal}
+.quote-attr{margin-top:20px;color:#334155;font-size:12px;letter-spacing:2px}
+.cta-wrap{padding:0 24px 80px;max-width:600px;margin:0 auto;position:relative;z-index:1}
+.cta-box{background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.2);border-radius:24px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(99,102,241,0.12),transparent);pointer-events:none}
+.cta-emoji{font-size:48px;margin-bottom:20px}
+.cta-sub{color:#475569;font-size:15px;line-height:1.7;margin-bottom:32px;max-width:400px;margin-left:auto;margin-right:auto}
+footer{border-top:1px solid rgba(255,255,255,0.05);padding:32px 24px;text-align:center;color:#1e293b;font-size:13px;position:relative;z-index:1}
+.success{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:12px;padding:16px 24px;color:#22c55e;font-weight:700;font-size:16px;display:none;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<nav>
+  <div class="logo">BenSimple.</div>
+  <div class="live"><div class="dot"></div>EARLY ACCESS</div>
+</nav>
+<div class="hero">
+  <div class="orb">B</div>
+  <div class="tag">The World's Simplest AI Platform</div>
+  <h1><span class="g1">The Sky Is The Limit.</span><br><span class="g2">We Help You See It.</span></h1>
+  <p class="sub">You don't need to know the right questions. You don't need a tech background. Just tell BenSimple what you want — and we handle the rest.</p>
+  <div class="form">
+    <input type="email" id="e1" placeholder="Enter your email for early access">
+    <button class="btn" onclick="join('e1','s1')">Get Early Access →</button>
+  </div>
+  <div class="success" id="s1">✓ You're on the list. Welcome to BenSimple.</div>
+  <div class="note">No spam. No credit card. Just early access.</div>
+  <div class="stats">
+    <div class="stat"><div class="stat-val">∞</div><div class="stat-label">Problems We Solve</div></div>
+    <div class="stat"><div class="stat-val">1</div><div class="stat-label">Place To Start</div></div>
+    <div class="stat"><div class="stat-val">0</div><div class="stat-label">Complexity Required</div></div>
+  </div>
+</div>
+<div class="section">
+  <div class="sec-tag">How It Works</div>
+  <h2>AI That Actually Works For You</h2>
+  <div class="features">
+    <div class="feature">
+      <div class="ficon" style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3)">🎯</div>
+      <div><div class="ftitle">Tell Us What You Need</div><div class="fdesc">No blank box. No confusion. BenSimple asks the right questions and figures out exactly what you're trying to accomplish.</div></div>
+    </div>
+    <div class="feature">
+      <div class="ficon" style="background:rgba(34,197,94,0.15);border:1px solid rgba(34,197,94,0.3)">💰</div>
+      <div><div class="ftitle">Find the Opportunity</div><div class="fdesc">From flipping phones to starting a business — BenSimple's agents go find the opportunity so you don't have to.</div></div>
+    </div>
+    <div class="feature">
+      <div class="ficon" style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3)">⚡</div>
+      <div><div class="ftitle">Execute Simply</div><div class="fdesc">Legal docs. Business plans. Investment breakdowns. Career moves. We strip away the complexity and hand you the path forward.</div></div>
+    </div>
+    <div class="feature">
+      <div class="ficon" style="background:rgba(14,165,233,0.15);border:1px solid rgba(14,165,233,0.3)">🔁</div>
+      <div><div class="ftitle">Scale Without Limits</div><div class="fdesc">Start with one question. End up with a business. BenSimple grows with you — from day one hustle to enterprise operation.</div></div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="sec-tag">The Platform</div>
+  <h2>One Platform. Every Problem.</h2>
+  <div class="modules">
+    <div class="module"><div class="mod-top"><span style="font-size:26px">🧠</span><span class="badge live-b">Live</span></div><div class="mod-title">AI Intake</div><div class="mod-desc">Tell us what you want. We figure out the rest.</div></div>
+    <div class="module"><div class="mod-top"><span style="font-size:26px">📊</span><span class="badge live-b">Live</span></div><div class="mod-title">Flip Tracker</div><div class="mod-desc">Buy low. Sell high. Track every deal.</div></div>
+    <div class="module"><div class="mod-top"><span style="font-size:26px">🔍</span><span class="badge beta-b">Beta</span></div><div class="mod-title">Market Scout</div><div class="mod-desc">Domain arbitrage and marketplace intelligence.</div></div>
+    <div class="module"><div class="mod-top"><span style="font-size:26px">⚖️</span><span class="badge soon-b">Coming</span></div><div class="mod-title">Legal Simple</div><div class="mod-desc">Contracts, filings, and rights — explained simply.</div></div>
+    <div class="module"><div class="mod-top"><span style="font-size:26px">💵</span><span class="badge soon-b">Coming</span></div><div class="mod-title">Money Simple</div><div class="mod-desc">Investing, budgeting, and building wealth.</div></div>
+    <div class="module"><div class="mod-top"><span style="font-size:26px">📈</span><span class="badge soon-b">Coming</span></div><div class="mod-title">Career Simple</div><div class="mod-desc">Jobs, resumes, and negotiation — made simple.</div></div>
+  </div>
+</div>
+<div class="quote-box">
+  <blockquote>"Most people don't fail because they lack talent. They fail because nobody ever <span>made it simple enough</span> for them to take the first step."</blockquote>
+  <div class="quote-attr">— THE BENSIMPLE PHILOSOPHY</div>
+</div>
+<div class="cta-wrap">
+  <div class="cta-box">
+    <div class="cta-glow"></div>
+    <div class="cta-emoji">🚀</div>
+    <h2 style="margin-bottom:16px">Ready to Make It Simple?</h2>
+    <p class="cta-sub">Join the waitlist. Be first when we launch. No tech skills required.</p>
+    <div class="form">
+      <input type="email" id="e2" placeholder="your@email.com">
+      <button class="btn" onclick="join('e2','s2')">Join Waitlist</button>
+    </div>
+    <div class="success" id="s2">✓ You're in. Welcome to BenSimple.</div>
+  </div>
+</div>
+<footer>
+  <div style="font-weight:700;color:#334155;margin-bottom:6px">BenSimple.</div>
+  <div>The sky is the limit — we just help you see it clearly.</div>
+  <div style="margin-top:8px">© 2026 BenSimple. All rights reserved.</div>
+</footer>
+<script>
+function join(inputId, successId) {
+  var e = document.getElementById(inputId).value;
+  if (!e || !e.includes('@')) return;
+  document.getElementById(successId).style.display = 'block';
+}
+</script>
+</body>
+</html>
